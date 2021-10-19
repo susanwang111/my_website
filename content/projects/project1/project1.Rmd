@@ -1,0 +1,143 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:42:51-05:00"
+description: Where do people drink the most alcohol
+draft: false
+image: pic10.jpg
+keywords: ""
+slug: project1
+title: Project 1 Alcohol Consumption
+---
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(rvest) # to scrape wikipedia page
+
+```
+
+# Where Do People Drink The Most Beer, Wine And Spirits?
+
+Back in 2014, [fivethiryeight.com](https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/) published an article on alcohol consumption in different countries. The data `drinks` is available as part of the `fivethirtyeight` package. Make sure you have installed the `fivethirtyeight` package before proceeding.
+
+```{r, load_alcohol_data}
+library(fivethirtyeight)
+data(drinks)
+
+
+# or download directly
+# alcohol_direct <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv")
+
+```
+
+**What are the variable types? Any missing values we should worry about?**
+
+The variable types are characters and numericals (Integer and double). There are no missing values.
+
+```{r glimpse_skim_data}
+glimpse(drinks)
+skimr::skim(drinks)
+
+
+```
+
+## Make a plot that shows the top 25 beer consuming countries
+
+```{r beer_plot}
+drinks %>% 
+  slice_max(order_by = beer_servings, n=25) %>% 
+  ggplot(aes(x = beer_servings, y = reorder(country,beer_servings))) +
+  geom_col(fill = "chocolate")+
+  theme_bw()+
+  labs(
+    title = "Top 25 beer consuming countries",
+    subtitle = "Bar Chart",
+    x = "Beer Servings",
+    y = NULL
+  )
+
+
+```
+
+**Comment on top 25 beer consuming countries:**
+
+The African countries Namibia and Gabon exhibit especially high beer consumptions given their colonial history: Namibia used to be a German colony in the 20th century, and Gabon a French one. Both countries have relatively small populations (around 2 million), and their life expectancies are also relatively low (around 65 years), which also means that older people who may consume less beer are not included in the sample size. 
+
+
+## Make a plot that shows the top 25 wine consuming countries
+
+```{r wine_plot}
+
+drinks %>% 
+  slice_max(order_by = wine_servings, n=25) %>% 
+  ggplot(aes(x = wine_servings, y = fct_reorder(country,wine_servings))) +
+  geom_col(fill = "dark red")+
+  theme_bw()+
+  labs(
+    title = "Top 25 wine consuming countries",
+    subtitle = "Bar Chart",
+    x = "Wine Servings",
+    y = NULL
+  )
+
+
+```
+
+**Comment on top 25 wine consuming countries:**
+
+Andorra is a country that borders France, the highest wine consuming country, and has a population of only 77,000. Equatorial Guinea has a history of being under Portuguese and French rule which also explains its high wine consumption. 
+
+
+## Finally, make a plot that shows the top 25 spirit consuming countries
+
+```{r spirit_plot}
+drinks %>% 
+  slice_max(order_by = spirit_servings, n=25) %>% 
+  ggplot(aes(x = spirit_servings, y = fct_reorder(country,spirit_servings))) +
+  geom_col(fill = "White", colour = "black")+
+  theme_bw()+
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  labs(
+    title = "Top 25 spirit consuming countries",
+    subtitle = "Bar Chart",
+    x = "Spirit servings",
+    y = NULL
+  )
+
+```
+
+**Comment on top 25 spirit consuming countries:**
+
+Grenada had a Liquor Licence Act passed in 1901 which allowed citizens to consume unlimited amounts of alcohol legally, and this has had a profound impact on the drinking culture in the country. Many locals are arguing that more regulation needs to be passed to improve the situation. Many of the countries in the top 25 are in the Caribbean which has a strong spirit culture centred around its rum manufacturing capabilities.
+
+**What can you infer from these plots? Don't just explain what's in the graph, but speculate or tell a short story (1-2 paragraphs max).**
+
+> TYPE YOUR ANSWER AFTER (AND OUTSIDE!) THIS BLOCKQUOTE.
+
+What we can infer from these plots is that alcohol consumption can easily be traced through cultural and historical factors. For example, Namibia used to be a German colony and hence consumes the most beer, France is largely where viticulture originated, and Grenada, the top spirit consumer, is in the Caribbean which has a history of spirit manufacturing. What is interesting is that very few countries are repeatedly seen in the top 25 of either beer, wine or spirits. What this shows is that once a country is high in one type of alcohol, it tends to consume very little of other types. 
