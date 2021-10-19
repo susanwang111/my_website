@@ -9,6 +9,12 @@ image: pic10.jpg
 keywords: ""
 slug: project1
 title: Project 1 Alcohol Consumption
+output:
+  blogdown::html_page:
+    toc: true
+    fig_width: 6
+    dev: "svg"
+
 ---
 ```{r, setup, echo=FALSE}
 knitr::opts_chunk$set(
