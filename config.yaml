@@ -62,48 +62,48 @@ params:
   navigation:
     button1:
       - name: Get Started
-        url: blogs
+        url: projects
 #    button2:
 #      - name: Log In
 #        url: '#'
     links:
       - name: Home
         url: '#'
-      - name: Blogs
-        url: blogs
+      - name: Projects
+        url: projects
 #      - name: Generic Blog
 #        url: blogs/ipsum
 #      - name: Elements
 #        url: elements.html
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+#    subtitle: By HTML5 Up
+    title: Portfolio
   tiles:
     enable: yes
     showcase:
       - image: pic01.jpg
-        subtitle: Ipsum Dolor Sit Amet
+        subtitle: A brief introduction
         title: About Me
         url: projects/aliquam
       - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Project 1
+        subtitle: Where do people drink the most alcohol
+        title: Project 1 Alcohol Consumption
         url: projects/tempus
       - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Project 2
+        subtitle: Climate change and temperature anomalies
+        title: Project 2 Climate Change
         url: projects/magna
       - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Project 3
+        subtitle: Omega Group plc - pay discrimination
+        title: Project 3 Omega Group Salaries
         url: projects/ipsum
       - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Project 4
+        subtitle: CPI components change over the past few years
+        title: Project 4 CPI and Components
         url: projects/ipsum
       - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Project 5
+        subtitle: GDP components change over time and among countries
+        title: Project 5 GDP and Components
         url: projects/ipsum
   two:
     buttonText: Get Started
@@ -115,4 +115,4 @@ params:
       Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
       amet pharetra et feugiat tempus."
     title: Massa libero
-    url: blogs
+    url: projects
