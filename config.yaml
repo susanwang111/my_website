@@ -63,9 +63,9 @@ params:
     button1:
       - name: Get Started
         url: blogs
-    button2:
-      - name: Log In
-        url: '#'
+#    button2:
+#      - name: Log In
+#        url: '#'
     links:
       - name: Home
         url: '#'
@@ -83,27 +83,27 @@ params:
     showcase:
       - image: pic01.jpg
         subtitle: Ipsum Dolor Sit Amet
-        title: Aliquam
+        title: About Me
         url: blogs/aliquam
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
-        title: Tempus
+        title: Project 1
         url: blogs/tempus
       - image: pic03.jpg
         subtitle: Lorem Etiam Nullam
-        title: Magna
+        title: Project 2
         url: blogs/magna
       - image: pic04.jpg
         subtitle: Nisl Sed Aliquam
-        title: Ipsum
+        title: Project 3
         url: blogs/ipsum
       - image: pic05.jpg
         subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
+        title: Project 4
         url: blogs/ipsum
       - image: pic06.jpg
         subtitle: Feugiat Amet Tempus
-        title: Etiam
+        title: Project 5
         url: blogs/ipsum
   two:
     buttonText: Get Started
