@@ -88,7 +88,7 @@ params:
       - image: pic02.jpg
         subtitle: Where do people drink the most alcohol
         title: Project 1 Alcohol Consumption
-        url: projects/project1/welcome_to_hell_with_comments
+        url: projects/project1/alcohol
       - image: pic03.jpg
         subtitle: Climate change and temperature anomalies
         title: Project 2 Climate Change
