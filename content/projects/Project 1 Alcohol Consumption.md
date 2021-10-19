@@ -2,13 +2,11 @@
 categories:
 - ""
 - ""
-date: "2017-10-31T21:28:43-05:00"
+date: "2021-10-20"
 description: ""
 draft: false
-image: pic10.jpg
+#image: pic10.jpg
 keywords: ""
-slug: ipsum
-title: Ipsum
+slug: project1
+title: Project 1 Alcohol Consumption
 ---
-
-Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.
