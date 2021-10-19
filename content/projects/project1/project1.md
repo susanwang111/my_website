@@ -7,6 +7,6 @@ description: Where do people drink the most alcohol
 draft: false
 image: pic10.jpg
 keywords: ""
-slug: project1
+slug: project11
 title: Project 1 Alcohol Consumption
 ---

@@ -1,19 +1,16 @@
 ---
-categories:
-- ""
-- ""
-date: "2017-10-31T22:42:51-05:00"
-description: Where do people drink the most alcohol
-draft: false
-image: pic10.jpg
-keywords: ""
-slug: project11
 title: Project 1 Alcohol Consumption
-output:
-  blogdown::html_page:
-    toc: true
-    fig_width: 6
-
+#author:
+date: '2021-10-19'
+slug: project1
+categories: 
+  - Index
+  - ''
+tags: []
+description: Where do people drink the most alcohol
+image: ''
+keywords: ''
+draft: no
 ---
 ```{r, setup, echo=FALSE}
 knitr::opts_chunk$set(
