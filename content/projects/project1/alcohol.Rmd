@@ -3,13 +3,14 @@ title: "Project 1 Alcohol Consumption"
 subtitle: "Where do people drink the most alcohol"
 output:
   html_document:
-  theme: flatly
-  highlight: zenburn
-  toc: yes
-  toc_float: yes
-    pdf_document:
+    theme: flatly
+    highlight: zenburn
+    toc: yes
+    toc_float: yes
+  pdf_document:
     toc: yes
 ---
+
 ```{r, setup, echo=FALSE}
 knitr::opts_chunk$set(
   message = FALSE, 
@@ -42,15 +43,31 @@ library(rvest) # to scrape wikipedia page
 
 ```
 
-Back in 2014, [fivethiryeight.com](https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/) published an article on alcohol consumption in different countries. 
+
+
+Back in 2014, [fivethiryeight.com](https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/) published an article on alcohol consumption in different countries.
 
 ```{r, load_alcohol_data}
 library(fivethirtyeight)
 data(drinks)
 
+
+# or download directly
+# alcohol_direct <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv")
+
 ```
 
-## The top 25 beer consuming countries:
+
+The variable types are characters and numericals (Integer and double). There are no missing values.
+
+```{r glimpse_skim_data}
+glimpse(drinks)
+skimr::skim(drinks)
+
+
+```
+
+## The top 25 beer consuming countries
 
 ```{r beer_plot}
 drinks %>% 
@@ -67,6 +84,8 @@ drinks %>%
 
 
 ```
+
+
 
 The African countries Namibia and Gabon exhibit especially high beer consumptions given their colonial history: Namibia used to be a German colony in the 20th century, and Gabon a French one. Both countries have relatively small populations (around 2 million), and their life expectancies are also relatively low (around 65 years), which also means that older people who may consume less beer are not included in the sample size. 
 
@@ -91,6 +110,7 @@ drinks %>%
 ```
 
 
+
 Andorra is a country that borders France, the highest wine consuming country, and has a population of only 77,000. Equatorial Guinea has a history of being under Portuguese and French rule which also explains its high wine consumption. 
 
 
@@ -113,10 +133,11 @@ drinks %>%
 ```
 
 
+
 Grenada had a Liquor Licence Act passed in 1901 which allowed citizens to consume unlimited amounts of alcohol legally, and this has had a profound impact on the drinking culture in the country. Many locals are arguing that more regulation needs to be passed to improve the situation. Many of the countries in the top 25 are in the Caribbean which has a strong spirit culture centred around its rum manufacturing capabilities.
+
 
 
 > Implication
 
 What we can infer from these plots is that alcohol consumption can easily be traced through cultural and historical factors. For example, Namibia used to be a German colony and hence consumes the most beer, France is largely where viticulture originated, and Grenada, the top spirit consumer, is in the Caribbean which has a history of spirit manufacturing. What is interesting is that very few countries are repeatedly seen in the top 25 of either beer, wine or spirits. What this shows is that once a country is high in one type of alcohol, it tends to consume very little of other types. 
-
