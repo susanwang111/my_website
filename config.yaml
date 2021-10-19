@@ -84,27 +84,27 @@ params:
       - image: pic01.jpg
         subtitle: A brief introduction
         title: About Me
-        url: projects/aliquam
+        url: projects/about
       - image: pic02.jpg
         subtitle: Where do people drink the most alcohol
         title: Project 1 Alcohol Consumption
-        url: projects/tempus
+        url: projects/project1
       - image: pic03.jpg
         subtitle: Climate change and temperature anomalies
         title: Project 2 Climate Change
-        url: projects/magna
+        url: projects/project2
       - image: pic04.jpg
         subtitle: Omega Group plc - pay discrimination
         title: Project 3 Omega Group Salaries
-        url: projects/ipsum
+        url: projects/project3
       - image: pic05.jpg
         subtitle: CPI components change over the past few years
         title: Project 4 CPI and Components
-        url: projects/ipsum
+        url: projects/project4
       - image: pic06.jpg
         subtitle: GDP components change over time and among countries
         title: Project 5 GDP and Components
-        url: projects/ipsum
+        url: projects/project5
   two:
     buttonText: Get Started
     enable: yes
