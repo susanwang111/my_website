@@ -1,15 +1,13 @@
 ---
-
 title: "Project 1 Alcohol Consumption"
 output:
   html_document:
-    theme: flatly
-    highlight: zenburn
+  theme: flatly
+  highlight: zenburn
+  toc: yes
+  toc_float: yes
+    pdf_document:
     toc: yes
-    toc_float: yes
-  pdf_document:
-    toc: yes
-
 ---
 ```{r, setup, echo=FALSE}
 knitr::opts_chunk$set(
