@@ -43,7 +43,7 @@ library(rvest) # to scrape wikipedia page
 
 ```
 
-#Where do people drink the most alcohol?
+# Where do people drink the most alcohol?
 
 Back in 2014, [fivethiryeight.com](https://fivethirtyeight.com/features/dear-mona-followup-where-do-people-drink-the-most-beer-wine-and-spirits/) published an article on alcohol consumption in different countries.
 
