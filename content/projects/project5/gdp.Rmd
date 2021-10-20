@@ -52,7 +52,7 @@ The GDP data we will look at is from the [United Nations' National Accounts Main
 
 ```{r read_GDP_data}
 
-UN_GDP_data  <-  read_excel(here::here("content","projects","project5","Download-GDPconstant-USD-countries.xls"), 
+UN_GDP_data  <-  read_excel(here::here("content","projects","project5","Download-GDPconstant-USD-countries.xlsx"), 
                 sheet="Download-GDPconstant-USD-countr", 
                 skip=2) 
 
@@ -72,7 +72,7 @@ library(lubridate)
 
 tidy_GDP_data <- UN_GDP_data %>% 
   subset(select = -c(CountryID)) %>% 
-  pivot_longer(cols = 3:50,
+  pivot_longer(cols = 3:52,
                names_to = "year",
                values_to = "value") %>% 
   mutate(value = value/1e9)
