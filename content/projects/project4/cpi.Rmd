@@ -1,6 +1,7 @@
 ---
 title: "Project 4 CPI and Components"
 subtitle: "How has the CPI and its components changed over the last few years?"
+image: pic05.jpg
 output:
   html_document:
     theme: flatly

@@ -1,6 +1,7 @@
 ---
 title: "Project 1 Alcohol Consumption"
 subtitle: "Where do people drink the most alcohol"
+image: pic02.jpg
 output:
   html_document:
     theme: flatly
