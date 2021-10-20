@@ -96,7 +96,7 @@ params:
       - image: pic04.jpg
         subtitle: Omega Group plc - pay discrimination
         title: Project 3 Omega Group Salaries
-        url: projects/project3/project3
+        url: projects/project3/omega
       - image: pic05.jpg
         subtitle: CPI components change over the past few years
         title: Project 4 CPI and Components
