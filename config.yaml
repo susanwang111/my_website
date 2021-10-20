@@ -10,7 +10,7 @@ params:
     subtitle: |-
 #      A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
 #      AND RELEASED UNDER THE CREATIVE COMMONS.
-    title: Hi, my name is Susan
+    title: Portfolio Website for Susan Wang
   blog: {}
   contact:
     address:
@@ -92,7 +92,7 @@ params:
       - image: pic03.jpg
         subtitle: Climate change and temperature anomalies
         title: Project 2 Climate Change
-        url: projects/project2/project2
+        url: projects/project2/climate
       - image: pic04.jpg
         subtitle: Omega Group plc - pay discrimination
         title: Project 3 Omega Group Salaries
