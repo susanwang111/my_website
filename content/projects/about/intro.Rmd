@@ -26,6 +26,7 @@ Now I'm an MFA student at [`London Business School`](https://www.london.edu).
 I include 5 projects in this portfolio website. All the projects are from course `Data Analytics for Finance`, and are done by my study group A8 (I have an amazing group).
 
 A brief overview of the projects: 
+
 * Project 1 Alcohol Consumption analyzes the consumption of beer, wine, and spirits of different countries.
 * Project 2 Climate Change is a project about weather anomalies and the effect of increasing temperature.
 * Project 3 Omega Group Salaries explores the pay discrimination problem at the Omega Group.
