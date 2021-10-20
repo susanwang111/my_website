@@ -1,0 +1,159 @@
+---
+title: "Project 4 CPI and Components"
+subtitle: "How has the CPI and its components changed over the last few years?"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+---
+
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+```
+
+
+First, we find [CPI components at  FRED](https://fredaccount.stlouisfed.org/public/datalist/843). 
+
+Once you have a vector of components, we  then pass it to `tidyquant::tq_get(get = "economic.data", from =  "2000-01-01")` to get all data since January 1, 2000. Since the data we download is an index with various starting dates, we need to calculate the yearly, or 12-month change. To do this we need to use the `lag` function, and specifically, `year_change = value/lag(value, 12) - 1`; this means we are comparing the current month's value with that 12 months ago lag(value, 12).
+
+We order components so the higher the yearly change, the earlier does that component appear. We also make sure that the **All Items** CPI (CPIAUCSL) appears first.
+
+Then we add a `geom_smooth()` for each component to get a sense of the overall trend, and then colour the points according to whether yearly change was positive or negative. 
+
+```{r cpi_plot, fig.height= 13, fig.width= 15}
+
+library(R.utils)
+library(readr)
+library(ggtext)
+library(scales)
+
+CPI_data_1 <- read_csv(here::here("content","projects","project4","cpi_data.csv"))
+
+start <- "Consumer Price Index for All Urban Consumers: "
+end <- " in U.S. City Average"
+
+for(i in 1:18783)
+{
+CPI_data_1[i,4] <- strsplit(strsplit(CPI_data_1$title[i], start)[[1]][2], end)[[1]][1]
+}
+
+library(lubridate)
+CPI_data_2 <- CPI_data_1 %>% 
+              mutate(year = year(date)) %>%
+              select(component,date,title,value,year) %>%   
+              filter(year>2015) %>% 
+              group_by(component) %>% 
+              mutate(year_change = value/lag(value, 12) - 1)
+
+CPI_data_3 <- CPI_data_2 %>% 
+              group_by(date, component, year_change) %>% 
+              summarize (date, component, title, year_change)
+
+CPI_data_4 <- CPI_data_3[613:nrow(CPI_data_3),]  %>% 
+              group_by(component) %>%
+              mutate (maximum = max(year_change)) %>% 
+              summarise(component, date, title, year_change, maximum) %>% 
+              na.omit()
+  
+CPI_data_for_plot <- CPI_data_4 %>% 
+                      arrange(desc(maximum)) %>%
+                      arrange(factor(title, levels = c("All Items")))
+
+cpi_plot <- ggplot(CPI_data_for_plot, aes(x = date, y = year_change)) +
+            geom_point(color = ifelse(CPI_data_for_plot$year_change<0,"steelblue1","orangered")) +
+            facet_wrap(~factor(CPI_data_for_plot$title, levels = unique(CPI_data_for_plot$title)), ncol = 6, scales = "free")+
+            geom_smooth(se = FALSE, color = "slategrey") +
+            theme_bw()+
+            scale_y_continuous(labels = scales::percent) +
+            labs(title = "Yearly change of US CPI (All Items) and its components",
+            subtitle = "<span style = 'font-size:12pt'>YoY change being <span style = 'color: orangered;'>positive</span> and <span style = 'color:       steelblue1;'>negative</span><br>Jan 2016 to Aug 2021",
+             x = " ",
+             y= "YoY % change",
+             caption = "Data from St. Louis Fed FRED
+    https://fredaccount.stlouisfed.org/public/datalist/843")+
+            theme(plot.title = element_text(size=14, face = "bold"), plot.subtitle = element_markdown(size= 12), strip.text = element_text(size=10)) +
+            NULL
+
+cpi_plot
+
+```
+
+We choose a smaller subset of the components we have and only list the major categories (Housing, Transportation, Food and beverages, Medical care, Education and communication, Recreation, and Apparel), sorted according to their relative importance.
+
+```{r, CPI yearly change for major components}
+
+library(dplyr)
+
+subset_CPI <- subset(CPI_data_for_plot, title =="Housing" |
+       title =="Transportation" |
+       title =="Food and Beverages" |
+       title =="Medical Care" |
+       title =="Education and Communication" |
+       title =="Recreation" |
+       title =="Apparel") 
+
+major_components <- subset_CPI %>% 
+                    arrange(factor(title, levels = c("Housing","Transportation", "Food and Beverages", "Medical Care","Education and Communication","Recreation","Apparel")))
+
+
+major_category_plot<- ggplot(major_components, aes(x = date, y = year_change)) +
+                      geom_point(color = ifelse(major_components$year_change<0,"steelblue1","orangered")) +
+                      facet_wrap((~factor(major_components$title, levels = unique(major_components$title))), scales = "free")+
+                      geom_smooth(se = FALSE, color = "slategrey") +
+                      theme_bw()+
+                      scale_y_continuous(labels = scales::percent) +
+                      labs(title = "Yearly change of major US CPI components",
+                      subtitle = "<span style = 'font-size:12pt'>YoY change being <span style = 'color: orangered;'>positive</span> and <span style = 'color: steelblue1;'>negative</span><br>Jan 2016 to Aug 2021",
+                      x = " ",
+                      y= "YoY % change",
+                      caption = "Data from St. Louis Fed FRED
+https://fredaccount.stlouisfed.org/public/datalist/843")+
+                      theme(plot.title = element_text(face = "bold"), plot.subtitle = element_markdown( ), strip.text = element_text(size=8.5)) +
+                      NULL
+
+major_category_plot
+
+```
+
+
+
+Given the current post-pandemic economy, many investors and businesses, in general, are very concerned with how inflation will impact the global economy. Although there is no consensus on how inflation will progress, some argue that the current uncontrolled inflation, that can be observed in most U.S. CPI components such as Food and Beverages, Apparel and Recreation. These components have yearly percent change considerably higher than in prior years is due to a mismatch in supply and demand caused by the global pandemic and the unexpected increase in demand, particularly from the United States. Also, these components are known to be quite cyclical, and given the current economic recovery, it’s normal to assume they will suffer higher inflation.
+
+On the other hand, Housing is still growing at a strong pace (c. 2.5%) due to low mortgage rates and rising wages, but at a slower pace compared to other components. This easing is due to the future economic uncertainty, and the increase in the supply of housing.
+
+Other components such as Medical Care and Education and Communication are more neutral when it comes to economic growth, as people will need access to these services regardless of the state of the economy. Furthermore, a more moderate inflation growth trend can be expected for these components. Medical Care inflation growth declined significantly over the last year. This can be explained by the decrease in COVID-19 cases and hospitalizations.
+
+The poor economic outlook during the start of the pandemic influenced many key manufacturing countries to understock their inventories. This understocking combined with an extraordinary increase in demand has depleted inventory stocks worldwide, increasing the price of many commodities and products. Once the supply cycle can catch up with the current level of demand, this mismatch will ease, and so could inflation, possibly without the need for Central Bank intervention.
+
+

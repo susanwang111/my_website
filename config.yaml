@@ -100,11 +100,11 @@ params:
       - image: pic05.jpg
         subtitle: CPI components change over the past few years
         title: Project 4 CPI and Components
-        url: projects/project4/project4
+        url: projects/project4/cpi
       - image: pic06.jpg
         subtitle: GDP components change over time and among countries
         title: Project 5 GDP and Components
-        url: projects/project5/project5
+        url: projects/project5/gdp
   two:
     buttonText: Get Started
     enable: yes
