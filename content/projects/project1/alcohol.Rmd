@@ -137,6 +137,6 @@ drinks %>%
 Grenada had a Liquor Licence Act passed in 1901 which allowed citizens to consume unlimited amounts of alcohol legally, and this has had a profound impact on the drinking culture in the country. Many locals are arguing that more regulation needs to be passed to improve the situation. Many of the countries in the top 25 are in the Caribbean which has a strong spirit culture centred around its rum manufacturing capabilities.
 
 
-##Implication
+## Implication
 
 What we can infer from these plots is that alcohol consumption can easily be traced through cultural and historical factors. For example, Namibia used to be a German colony and hence consumes the most beer, France is largely where viticulture originated, and Grenada, the top spirit consumer, is in the Caribbean which has a history of spirit manufacturing. What is interesting is that very few countries are repeatedly seen in the top 25 of either beer, wine or spirits. What this shows is that once a country is high in one type of alcohol, it tends to consume very little of other types. 
