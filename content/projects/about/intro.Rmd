@@ -1,0 +1,48 @@
+---
+title: "Introduction"
+author: "Susan Wang"
+date: "Oct 20, 2021"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+---
+
+# Susan Wang - Short Biography  
+
+### Introduction 
+
+My name is Susan Wang. From 2017 to 2021, I studied at [`Tufts University`](https://www.tufts.edu/), double majoring in Economics and International Relations.
+
+Now I'm an MFA student at [`London Business School`](https://www.london.edu).  
+
+### About This Portfolio Website
+
+I include 5 projects in this portfolio website. All the projects are from course `Data Analytics for Finance`, and are done by my study group A8 (I have an amazing group).
+
+A brief overview of the projects: 
+* Project 1 Alcohol Consumption analyzes the consumption of beer, wine, and spirits of different countries.
+* Project 2 Climate Change is a project about weather anomalies and the effect of increasing temperature.
+* Project 3 Omega Group Salaries explores the pay discrimination problem at the Omega Group.
+* Project 4 CPI and Components analyzes a subset of the CPI components change over the past few years.
+* Project 5 GDP and Components compares GDP components for two groups of countries: the US, Germany, India; as well as China, Peru, and Spain. 
+
+
+### Other Information About me
+
+1. My skills:
+
+* Microsoft Office Suite
+* FactSet
+* Stata
+
+2. My interests: 
+
+* Fencing
+* F1
+* ESG
+

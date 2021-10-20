@@ -64,7 +64,6 @@ The variable types are characters and numericals (Integer and double). There are
 glimpse(drinks)
 skimr::skim(drinks)
 
-
 ```
 
 ## The top 25 beer consuming countries
