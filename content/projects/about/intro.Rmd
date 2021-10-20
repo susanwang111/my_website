@@ -2,7 +2,7 @@
 title: "Introduction"
 author: "Susan Wang"
 date: "Oct 20, 2021"
-image: me.jpg{width=50%}
+image: me.jpg
 output:
   html_document:
     theme: flatly
