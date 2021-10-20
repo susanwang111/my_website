@@ -53,7 +53,7 @@ We carry out the analysis to find out whether there is indeed a significant diff
 ## Loading the data
 
 ```{r load_omega_data}
-omega <- read_csv(here::here("data", "omega.csv"))
+omega <- read_csv(here::here("content","projects","project3","omega.csv"))
 glimpse(omega) # examine the data frame
 ```
 
